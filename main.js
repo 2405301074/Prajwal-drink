@@ -1,121 +1,108 @@
-import './style.css';
+// ── Navbar scroll effect
+const navbar   = document.getElementById('navbar');
+const menuBtn  = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('navLinks');
 
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // 1. Sticky Navbar & Mobile Menu
-  const navbar = document.getElementById('navbar');
-  const mobileMenuBtn = document.getElementById('mobile-menu');
-  const navLinks = document.querySelector('.nav-links');
-  const navItems = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+menuBtn.addEventListener('click', () => {
+  menuBtn.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    menuBtn.classList.remove('active');
+    navLinks.classList.remove('active');
+  });
+});
+
+// ── Scroll reveal
+const revealObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      obs.unobserve(entry.target);
     }
   });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileMenuBtn.classList.toggle('active');
-    navLinks.classList.toggle('active');
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── Parallax hero image
+const heroImg = document.querySelector('.parallax');
+if (heroImg) {
+  window.addEventListener('scroll', () => {
+    heroImg.style.transform = `translateY(${window.scrollY * +heroImg.dataset.speed}px)`;
+  }, { passive: true });
+}
+
+// ── Cart toast
+const toast = document.getElementById('toast');
+document.querySelectorAll('.buy-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
   });
+});
 
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      mobileMenuBtn.classList.remove('active');
-      navLinks.classList.remove('active');
-    });
-  });
-
-  // 2. Scroll Reveal Animations
-  const revealElements = document.querySelectorAll('.reveal');
-  
-  const revealCallback = (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
-      }
-    });
-  };
-
-  const revealObserver = new IntersectionObserver(revealCallback, {
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
-  });
-
-  revealElements.forEach(el => revealObserver.observe(el));
-
-  // 3. Parallax Effect on Hero Image
-  const heroImg = document.querySelector('.parallax');
-  if (heroImg) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const speed = heroImg.getAttribute('data-speed');
-      heroImg.style.transform = `translateY(${scrollY * speed}px)`;
-    });
-  }
-
-  // 4. Shop 'Buy Now' Toast Notification
-  const buyButtons = document.querySelectorAll('.buy-btn');
-  const toast = document.getElementById('toast');
-
-  buyButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      toast.classList.add('show');
+// ── Contact form
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const orig = btn.innerText;
+    btn.innerText = 'Sending...';
+    setTimeout(() => {
+      btn.innerText = 'Message Sent! ⚡';
+      btn.style.background = 'var(--color-neon-green)';
+      btn.style.color = '#000';
+      contactForm.reset();
       setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3000);
-    });
+        btn.innerText = orig;
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 4000);
+    }, 1500);
   });
+}
 
-  // 5. Contact Form Submit Mock
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = contactForm.querySelector('button[type="submit"]');
-      const originalText = btn.innerText;
-      btn.innerText = 'Sending...';
-      
-      setTimeout(() => {
-        btn.innerText = 'Message Sent! ⚡';
-        btn.style.background = 'var(--color-neon-green)';
-        btn.style.color = '#000';
-        contactForm.reset();
-        
-        setTimeout(() => {
-          btn.innerText = originalText;
-          btn.style.background = '';
-          btn.style.color = '';
-        }, 4000);
-      }, 1500);
-    });
+// ── Chatbase floating widget
+// Lazy-load the iframe src only when opened for the first time
+const chatFab   = document.getElementById('chatFab');
+const chatPanel = document.getElementById('chatPanel');
+const chatClose = document.getElementById('chatClose');
+const iframe    = document.getElementById('chatbaseIframe');
+let iframeLoaded = false;
+
+function openChat() {
+  // Lazy load iframe
+  if (!iframeLoaded) {
+    iframe.src = iframe.dataset.src;
+    iframeLoaded = true;
   }
+  chatPanel.classList.add('open');
+  chatPanel.setAttribute('aria-hidden', 'false');
+  chatFab.setAttribute('aria-label', 'Close Support Chat');
+}
 
-  // 6. Mock Chatbot Toggle
-  const chatToggle = document.getElementById('chatToggle');
-  const chatWindow = document.getElementById('chatWindow');
-  const closeChat = document.getElementById('closeChat');
+function closeChat() {
+  chatPanel.classList.remove('open');
+  chatPanel.setAttribute('aria-hidden', 'true');
+  chatFab.setAttribute('aria-label', 'Open Support Chat');
+}
 
-  if (chatToggle && chatWindow && closeChat) {
-    chatToggle.addEventListener('click', () => {
-      // Toggle display
-      if (chatWindow.style.display === 'flex') {
-        chatWindow.classList.remove('active');
-        setTimeout(() => chatWindow.style.display = 'none', 400); // match transition
-      } else {
-        chatWindow.style.display = 'flex';
-        // slight delay to allow display:flex to apply before transition
-        setTimeout(() => chatWindow.classList.add('active'), 10);
-      }
-    });
+chatFab.addEventListener('click', () => {
+  chatPanel.classList.contains('open') ? closeChat() : openChat();
+});
 
-    closeChat.addEventListener('click', () => {
-      chatWindow.classList.remove('active');
-      setTimeout(() => chatWindow.style.display = 'none', 400);
-    });
-  }
+chatClose.addEventListener('click', closeChat);
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && chatPanel.classList.contains('open')) closeChat();
 });

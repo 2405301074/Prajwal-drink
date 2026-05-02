@@ -2,21 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEON⚡SURGE | Unleash Your Energy</title>
     <meta name="description" content="Premium energy drink for ultimate focus, stamina, and performance. Unleash your energy with NEON⚡SURGE." />
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
-        <a href="#" class="logo">NEON<span>⚡</span>SURGE</a>
-        <div class="nav-links">
+        <a href="#home" class="logo">NEON<span>⚡</span>SURGE</a>
+        <div class="nav-links" id="navLinks">
           <a href="#home" class="nav-link">Home</a>
           <a href="#about" class="nav-link">About</a>
           <a href="#flavors" class="nav-link">Flavors</a>
@@ -24,15 +24,14 @@
           <a href="#contact" class="nav-link">Contact</a>
         </div>
         <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </div>
     </nav>
 
     <main>
-      <!-- Hero Section -->
+
+      <!-- ─── HERO ─────────────────────────────────── -->
       <section id="home" class="hero">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
@@ -45,16 +44,16 @@
           </div>
         </div>
         <div class="hero-image-container animate-in">
-          <img src="/assets/hero-can.png" alt="Neon Surge Energy Drink Can" class="hero-image parallax" data-speed="0.05" id="hero-product-img"/>
+          <img src="/assets/hero-can.png" alt="Neon Surge Energy Drink Can" class="hero-image parallax" data-speed="0.05"/>
           <div class="product-glow"></div>
         </div>
       </section>
 
-      <!-- About Section -->
+      <!-- ─── ABOUT ──────────────────────────────────── -->
       <section id="about" class="about reveal">
         <div class="container about-grid">
           <div class="about-image glass-panel">
-            <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1200" alt="High energy neon gym athlete" id="about-img"/>
+            <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1200" alt="High energy neon gym athlete"/>
           </div>
           <div class="about-text">
             <h2>Fueling the <span class="neon-text-green">Future</span></h2>
@@ -68,7 +67,7 @@
         </div>
       </section>
 
-      <!-- Flavors Section -->
+      <!-- ─── FLAVORS ────────────────────────────────── -->
       <section id="flavors" class="flavors reveal">
         <div class="container">
           <div class="section-header">
@@ -76,30 +75,27 @@
             <p>Experience our signature lineup of electric flavors.</p>
           </div>
           <div class="flavor-cards">
-            <!-- Card 1 -->
             <div class="card glass-card">
               <div class="card-glow glow-blue"></div>
-              <img src="/assets/flavor-blue.png" alt="Electric Blueberry" class="flavor-img" id="flavor-blue-img"/>
+              <img src="/assets/flavor-blue.png" alt="Electric Blueberry" class="flavor-img"/>
               <div class="card-content">
                 <h3>Electric Blue</h3>
                 <p>A crisp, shocking burst of blue raspberry and citrus.</p>
                 <a href="#shop" class="btn-sm btn-outline">Select</a>
               </div>
             </div>
-            <!-- Card 2 -->
             <div class="card glass-card">
               <div class="card-glow glow-green"></div>
-              <img src="/assets/flavor-green.png" alt="Cyber Lime" class="flavor-img" id="flavor-green-img"/>
+              <img src="/assets/flavor-green.png" alt="Cyber Lime" class="flavor-img"/>
               <div class="card-content">
                 <h3>Cyber Lime</h3>
                 <p>Neon lime infused with a hint of cooling mint.</p>
                 <a href="#shop" class="btn-sm btn-outline">Select</a>
               </div>
             </div>
-            <!-- Card 3 -->
             <div class="card glass-card">
               <div class="card-glow glow-red"></div>
-              <img src="/assets/flavor-red.png" alt="Plasma Punch" class="flavor-img" id="flavor-red-img"/>
+              <img src="/assets/flavor-red.png" alt="Plasma Punch" class="flavor-img"/>
               <div class="card-content">
                 <h3>Plasma Punch</h3>
                 <p>A volatile mix of tropical fruits and cherry.</p>
@@ -110,7 +106,7 @@
         </div>
       </section>
 
-      <!-- Features Section -->
+      <!-- ─── FEATURES ──────────────────────────────── -->
       <section class="features reveal">
         <div class="container features-grid">
           <div class="feature-box">
@@ -131,7 +127,7 @@
         </div>
       </section>
 
-      <!-- Testimonials Section -->
+      <!-- ─── TESTIMONIALS ───────────────────────────── -->
       <section class="testimonials reveal">
         <div class="container">
           <h2 class="text-center">The <span class="neon-text">Surge</span> Squad</h2>
@@ -155,30 +151,29 @@
         </div>
       </section>
 
-      <!-- Gallery Section -->
+      <!-- ─── GALLERY ────────────────────────────────── -->
       <section class="gallery reveal">
-        <div class="section-header" style="padding: 0 5%; margin-bottom: 40px;">
-          <h2>Life on <span class="neon-text-green">Full Charge</span></h2>
-          <p>From the gym floor to the dance floor — NEON⚡SURGE fuels it all.</p>
+        <div class="container" style="margin-bottom: 40px;">
+          <h2 class="text-center">Life on <span class="neon-text-green">Full Charge</span></h2>
+          <p class="text-center" style="color:var(--color-text-muted);margin-top:10px;">From the gym floor to the dance floor — NEON⚡SURGE fuels it all.</p>
         </div>
         <div class="gallery-container">
-          <img src="/assets/gallery-1.png" alt="Lifestyle" class="gallery-img" id="gallery-1-img"/>
-          <img src="/assets/gallery-2.png" alt="Nightlife" class="gallery-img" id="gallery-2-img"/>
-          <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?q=80&w=1200" alt="Premium Energy Drink Can" class="gallery-img" id="gallery-3-img"/>
-          <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1200" alt="Neon Gym Athlete" class="gallery-img" id="gallery-4-img"/>
-          <img src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1200" alt="Cyberpunk Neon City" class="gallery-img" id="gallery-5-img"/>
-          <img src="/assets/lifestyle-1.png" alt="Gym Workout" class="gallery-img" id="gallery-6-img"/>
+          <img src="/assets/gallery-1.png"   alt="Gym Lifestyle"       class="gallery-img"/>
+          <img src="/assets/gallery-2.png"   alt="Nightlife"           class="gallery-img"/>
+          <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?q=80&w=1200" alt="Premium Can Close-up" class="gallery-img"/>
+          <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1200" alt="Neon Gym Athlete"     class="gallery-img"/>
+          <img src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1200" alt="Cyberpunk City"        class="gallery-img"/>
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200" alt="Sports Performance"   class="gallery-img"/>
         </div>
       </section>
 
-      <!-- Shop Section -->
+      <!-- ─── SHOP ───────────────────────────────────── -->
       <section id="shop" class="shop reveal">
         <div class="container">
           <div class="section-header">
             <h2>Secure Your <span class="neon-text">Supply</span></h2>
           </div>
           <div class="pricing-cards">
-            <!-- 12 Pack -->
             <div class="pricing-card glass-card">
               <h3>Starter Pack</h3>
               <div class="price">$29.99 <span>/ 12-pack</span></div>
@@ -188,19 +183,17 @@
               </ul>
               <button class="btn btn-primary w-100 buy-btn">Add to Cart</button>
             </div>
-            <!-- 24 Pack (Popular) -->
             <div class="pricing-card glass-card popular">
               <div class="badge">Most Popular</div>
               <h3>Pro Surge</h3>
               <div class="price">$54.99 <span>/ 24-pack</span></div>
               <ul class="pricing-features">
-                <li>Mix & Match Flavors</li>
+                <li>Mix &amp; Match Flavors</li>
                 <li>Free Priority Shipping</li>
                 <li>Free Sticker Pack</li>
               </ul>
               <button class="btn btn-primary w-100 buy-btn">Add to Cart</button>
             </div>
-            <!-- Subscription -->
             <div class="pricing-card glass-card">
               <h3>Monthly Protocol</h3>
               <div class="price">$49.99 <span>/ month</span></div>
@@ -215,16 +208,16 @@
         </div>
       </section>
 
-      <!-- Contact Section -->
+      <!-- ─── CONTACT ────────────────────────────────── -->
       <section id="contact" class="contact reveal">
         <div class="container contact-grid">
           <div class="contact-info">
             <h2>Get in <span class="neon-text">Touch</span></h2>
             <p>Have a question or want to partner with us? Drop a message below.</p>
             <div class="social-links">
-              <a href="#" class="social-icon">IG</a>
-              <a href="#" class="social-icon">X</a>
-              <a href="#" class="social-icon">TT</a>
+              <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+              <a href="#" class="social-icon" aria-label="Twitter/X">X</a>
+              <a href="#" class="social-icon" aria-label="TikTok">TT</a>
             </div>
           </div>
           <form class="contact-form glass-panel" id="contactForm">
@@ -244,9 +237,10 @@
           </form>
         </div>
       </section>
+
     </main>
 
-    <!-- Footer -->
+    <!-- ─── FOOTER ────────────────────────────────────── -->
     <footer>
       <div class="container footer-content">
         <div class="footer-brand">
@@ -272,29 +266,40 @@
       </div>
     </footer>
 
-    <!-- Chatbot Mock -->
-    <div class="chatbot-widget" id="chatbot">
-      <button class="chat-toggle" id="chatToggle">
-        <span class="chat-icon">💬</span>
-      </button>
-      <div class="chat-window glass-panel" id="chatWindow">
-        <div class="chat-header">
-          <h5>Surge Support</h5>
-          <button class="close-chat" id="closeChat">×</button>
+    <!-- ─── CHATBASE CHATBOT WIDGET ───────────────────── -->
+    <!-- Toggle button -->
+    <button class="chat-fab" id="chatFab" aria-label="Open Support Chat">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </button>
+
+    <!-- Floating iframe panel -->
+    <div class="chat-panel glass-panel" id="chatPanel" aria-hidden="true">
+      <div class="chat-panel-header">
+        <div class="chat-panel-brand">
+          <span class="chat-dot"></span>
+          <span>Surge Support</span>
         </div>
-        <div class="chat-body">
-          <p class="bot-msg">Hey! ⚡ Ready to unleash your energy? How can I help you today?</p>
-        </div>
-        <div class="chat-input">
-          <input type="text" placeholder="Type a message...">
-          <button class="send-btn">➤</button>
-        </div>
+        <button class="chat-panel-close" id="chatClose" aria-label="Close chat">✕</button>
+      </div>
+      <div class="chat-panel-body">
+        <iframe
+          id="chatbaseIframe"
+          src=""
+          data-src="https://www.chatbase.co/chatbot-iframe/veLTpUBdj1MkBveZ0TSJi"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          title="NEON SURGE Support Chat"
+          allow="microphone"
+        ></iframe>
       </div>
     </div>
 
-    <!-- Toast Notification -->
+    <!-- Toast -->
     <div class="toast" id="toast">Added to cart! 🛒</div>
 
-    <script type="module" src="/main.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
